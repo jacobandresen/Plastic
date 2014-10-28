@@ -1,6 +1,7 @@
 
-function Plastic() {
+window.onload = function () {
 
+function Plastic() {
   var data = {
      tables: [],
      lines: []
@@ -70,5 +71,8 @@ function Plastic() {
       return exports;
     };
 
-   var p = new Plastic();
  };
+
+    console.log("startup");
+    var p = new Plastic();
+}
