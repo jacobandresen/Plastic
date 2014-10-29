@@ -13,6 +13,9 @@ function Plastic() {
 
     function addTable(table) {
         table.on('selected', function (option) {
+
+            console.log("selected:%o", option);
+            
             //make sure that we do not add a new table here
             option.e.stopPropagation();
             option.e.cancelBubble = true;
@@ -66,10 +69,10 @@ function Plastic() {
 
     function registerEvents() {
         canvas.on('mouse:down', function (options) {
-          
+
             //if we are not clicking an object .. then we create a new one
             if (!options.target) {
-                addTable(createTable(options.e.clientX, options.e.clientY));
+                addTable(createTable(options.e.layerX, options.e.layerY));
                 options.e.stopPropagation();
                 options.e.cancelBubble = true;
                 canvas.renderAll();
