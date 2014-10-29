@@ -66,11 +66,14 @@ function Plastic() {
 
     function registerEvents() {
         canvas.on('mouse:down', function (options) {
-            addTable(createTable(options.e.clientX, options.e.clientY));
-
-            options.e.stopPropagation();
-            options.e.cancelBubble = true;
-            canvas.renderAll();
+          
+            //if we are not clicking an object .. then we create a new one
+            if (!options.target) {
+                addTable(createTable(options.e.clientX, options.e.clientY));
+                options.e.stopPropagation();
+                options.e.cancelBubble = true;
+                canvas.renderAll();
+            }
         });
 
         //canvas.on('object:moving', function (e) {
